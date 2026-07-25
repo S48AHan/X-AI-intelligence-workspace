@@ -53,5 +53,5 @@ export type DashboardSection =
   | "Automations"
   | "Settings";
 
-export const DASHBOARD_TABS = ["Overview", "Analysis", "Automations", "Sources"] as const;
-export type DashboardTab = (typeof DASHBOARD_TABS)[number];
+export const DASHBOARD_TIME_RANGES = ["24 hours", "7 days", "30 days", "Quarter"] as const;
+export type DashboardTimeRange = (typeof DASHBOARD_TIME_RANGES)[number];

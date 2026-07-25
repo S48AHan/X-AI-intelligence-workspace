@@ -7,6 +7,7 @@ import { createEdgeGeometry, createGraphNodes, createNeighborMap, updateEdgeGeom
 import { stepGraphPhysics } from "../lib/graph-physics";
 import { usePrefersReducedMotion } from "@/shared/hooks/use-prefers-reduced-motion";
 import { GraphNode } from "./graph-node";
+import { GraphLayerLabels } from "./graph-layer-labels";
 
 export function KnowledgeGraph() {
   const nodes = useMemo(() => createGraphNodes(), []);
@@ -46,6 +47,7 @@ export function KnowledgeGraph() {
   const highlightedNeighbors = hoveredNode >= 0 ? neighbors[hoveredNode] ?? [] : [];
   return (
     <group ref={groupRef}>
+      <GraphLayerLabels />
       <lineSegments geometry={baseGeometry}><lineBasicMaterial color="#22d3ee" transparent opacity={0.14} /></lineSegments>
       <lineSegments geometry={highlightedGeometry}><lineBasicMaterial color="#8fe9ff" transparent opacity={0.85} /></lineSegments>
       {nodes.map((node, index) => {

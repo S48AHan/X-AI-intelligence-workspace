@@ -27,6 +27,13 @@ export const RECOMMENDATIONS: Recommendation[] = [
   { title: "Rebalance SKU-4471 forecast", sub: "Confidence 88% · 1-click apply", accent: "#34D399" },
 ];
 
+export const INSIGHT_KPIS: Kpi[] = [
+  { label: "New insights", value: "327", delta: "22.0%", trend: "up", vs: "vs previous period" },
+  { label: "High confidence", value: "91%", delta: "4.2%", trend: "up", vs: "confidence ≥ 0.85" },
+  { label: "Needs review", value: "18", delta: "6", trend: "down", vs: "open items" },
+  { label: "Actions created", value: "84", delta: "14.7%", trend: "up", vs: "from insights" },
+];
+
 export const ANALYSIS_KPIS: Kpi[] = [
   { label: "Model accuracy", value: "94.6%", delta: "1.2%", trend: "up", vs: "30-day" },
   { label: "Prediction drift", value: "0.8%", delta: "0.3%", trend: "down", vs: "within bound" },

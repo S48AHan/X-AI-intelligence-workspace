@@ -8,7 +8,7 @@ export function stepGraphPhysics(nodes: GraphNodeModel[], alpha: number) {
       const second = nodes[secondIndex];
       const delta = first.position.clone().sub(second.position);
       const distanceSquared = delta.lengthSq() + 0.01;
-      const force = 1200 / distanceSquared;
+      const force = 260 / distanceSquared;
       delta.normalize().multiplyScalar(force);
       first.velocity.add(delta);
       second.velocity.sub(delta);
@@ -20,12 +20,14 @@ export function stepGraphPhysics(nodes: GraphNodeModel[], alpha: number) {
     const target = nodes[targetIndex];
     const delta = target.position.clone().sub(source.position);
     const distance = delta.length() + 0.01;
-    delta.normalize().multiplyScalar((distance - 32) * 0.02);
+    const restingDistance = source.anchor.distanceTo(target.anchor);
+    delta.normalize().multiplyScalar((distance - restingDistance) * 0.035);
     source.velocity.add(delta);
     target.velocity.sub(delta);
   });
   nodes.forEach((node) => {
-    node.velocity.addScaledVector(node.position, -0.02).multiplyScalar(0.82);
+    const anchorForce = node.anchor.clone().sub(node.position).multiplyScalar(0.075);
+    node.velocity.add(anchorForce).multiplyScalar(0.78);
     node.position.addScaledVector(node.velocity, alpha);
   });
 }
